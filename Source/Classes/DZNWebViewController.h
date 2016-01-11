@@ -67,15 +67,17 @@ typedef NS_OPTIONS(NSUInteger, DZNsupportedWebActions) {
 
 /**
  Initializes and returns a newly created webview controller with an initial HTTP URL to be requested as soon as the view appears.
- 
+
  @param URL The HTTP URL to be requested.
  @returns The initialized webview controller.
  */
 - (instancetype)initWithURL:(NSURL *)URL;
 
+- (instancetype)initWithURL:(NSURL *)URL configuration:(WKWebViewConfiguration *)config;
+
 /**
  Initializes and returns a newly created webview controller for local HTML navigation.
- 
+
  @param URL The file URL of the main html.
  @returns The initialized webview controller.
  */
@@ -83,7 +85,7 @@ typedef NS_OPTIONS(NSUInteger, DZNsupportedWebActions) {
 
 /**
  Starts loading a new request. Useful to programatically update the web content.
- 
+
  @param URL The HTTP or file URL to be requested.
  */
 - (void)loadURL:(NSURL *)URL NS_REQUIRES_SUPER;

@@ -879,9 +879,13 @@ static char DZNWebViewControllerKVOContext = 0;
 
 - (void)removeObservers {
     if (self.hideBarsWithGestures) {
-        [self.navigationBar removeObserver:self forKeyPath:@"hidden" context:&DZNWebViewControllerKVOContext];
-        [self.navigationBar removeObserver:self forKeyPath:@"center" context:&DZNWebViewControllerKVOContext];
-        [self.navigationBar removeObserver:self forKeyPath:@"alpha" context:&DZNWebViewControllerKVOContext];
+        @try {
+            [self.navigationBar removeObserver:self forKeyPath:@"hidden" context:&DZNWebViewControllerKVOContext];
+            [self.navigationBar removeObserver:self forKeyPath:@"center" context:&DZNWebViewControllerKVOContext];
+            [self.navigationBar removeObserver:self forKeyPath:@"alpha" context:&DZNWebViewControllerKVOContext];
+        } @catch(id anException){
+            //do nothing, obviously it wasn't attached because an exception was thrown
+        }
     }
 }
 

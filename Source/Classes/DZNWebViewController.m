@@ -877,13 +877,17 @@ static char DZNWebViewControllerKVOContext = 0;
     [super viewDidUnload];
 }
 
-- (void)dealloc
-{
+- (void)removeObservers {
     if (self.hideBarsWithGestures) {
         [self.navigationBar removeObserver:self forKeyPath:@"hidden" context:&DZNWebViewControllerKVOContext];
         [self.navigationBar removeObserver:self forKeyPath:@"center" context:&DZNWebViewControllerKVOContext];
         [self.navigationBar removeObserver:self forKeyPath:@"alpha" context:&DZNWebViewControllerKVOContext];
     }
+}
+
+- (void)dealloc
+{
+    [self removeObservers];
     [self.webView removeObserver:self forKeyPath:@"loading" context:&DZNWebViewControllerKVOContext];
 
     _backwardBarItem = nil;

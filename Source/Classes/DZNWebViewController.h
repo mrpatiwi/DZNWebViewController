@@ -98,6 +98,8 @@ typedef NS_OPTIONS(NSUInteger, DZNsupportedWebActions) {
  */
 - (void)loadURL:(NSURL *)URL baseURL:(NSURL *)baseURL;
 
+- (void)removeObservers;
+
 ///------------------------------------------------
 /// @name Appearance customisation
 ///------------------------------------------------
